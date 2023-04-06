@@ -169,7 +169,7 @@ document.getElementById('max-audio').addEventListener('click',()=>{
 //funções referentes ao drag and drop
 function dropCopy(ev){
     ev.preventDefault();
-    if(ev.toElement.id=="algol"){
+    if((ev.target.id=="algol")||(ev.toElement.id=="algol")){
         let id = ev.dataTransfer.getData("text");
         let nodeCopy = document.getElementById(id).cloneNode(true);
         nodeCopy.id = "intr"+countinstruct++;
