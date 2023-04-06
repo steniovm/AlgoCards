@@ -1,0 +1,180 @@
+<canvas id="myCanvas" width="330" height="330"></canvas>
+<script>
+
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+const cellSize = 30;
+
+//desenha gride no tabuleiro
+function drawGrid(){
+    ctx.fillStyle = "#f5f5f5";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    // Desenha as linhas horizontais do grid
+  for (let y = 0; y <= canvas.height; y += cellSize) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
+  }
+    // Desenha as linhas verticais do grid
+  for (let x = 0; x <= canvas.width; x += cellSize) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+  }
+}
+
+function drawCircle(){
+  // Desenha um círculo
+  ctx.beginPath();
+  ctx.arc(165, 165, 120, 0, 2 * Math.PI);
+  ctx.strokeStyle = "#505050";
+  ctx.lineWidth = 5;
+  ctx.stroke();  
+}
+function drawSquare(){
+  // Desenha um quadrado
+  ctx.beginPath();
+  ctx.moveTo(75, 75);
+  ctx.lineTo(255, 75);
+  ctx.lineTo(255, 255);
+  ctx.lineTo(75, 255);
+  ctx.closePath();
+  ctx.strokeStyle = "#505050";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+}
+function drawTriangle(){
+  // Desenha um Triâgulo Equilátero
+  ctx.beginPath();
+  ctx.moveTo(165, 45);
+  ctx.lineTo(285, 255);
+  ctx.lineTo(45, 255);
+  ctx.closePath();
+  ctx.strokeStyle = "#505050";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+}
+function drawRectTriangle(){
+  // Desenha um Triâgulo Retângulo
+  ctx.beginPath();
+  ctx.moveTo(15, 15);
+  ctx.lineTo(315, 15);
+  ctx.lineTo(15, 315);
+  ctx.closePath();
+  ctx.strokeStyle = "#505050";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+}
+function drawLozenge(){
+  // Desenha um losângulo
+  ctx.beginPath();
+  ctx.moveTo(165, 15);
+  ctx.lineTo(255, 165);
+  ctx.lineTo(165, 315);
+  ctx.lineTo(75, 165);
+  ctx.closePath();
+  ctx.strokeStyle = "#505050";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+}
+function drawHexagono(){
+  // Desenha um hexágono
+  const x = 165;
+  const y = 165;
+  const size = 120;
+  ctx.beginPath();
+  ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
+  for (let i = 1; i <= 6; i++) {
+    ctx.lineTo(x + size * Math.cos(i * 2 * Math.PI / 6), y + size * Math.sin(i * 2 * Math.PI / 6));
+  }
+  ctx.closePath();
+  ctx.strokeStyle = "#505050";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+}
+function drawLadder(){
+  // Desenha um losângulo
+  ctx.beginPath();
+  ctx.moveTo(165, 165);
+  ctx.lineTo(195, 165);
+  ctx.lineTo(195, 195);
+  ctx.lineTo(225, 195);
+  ctx.lineTo(225, 225);
+  ctx.lineTo(255, 225);
+  ctx.lineTo(255, 255);
+  ctx.lineTo(285, 255);
+  ctx.lineTo(285, 285);
+  ctx.lineTo(315, 285);
+  ctx.lineTo(315, 315);
+  ctx.lineTo(15, 315);
+  ctx.lineTo(15, 15);
+  ctx.lineTo(45, 15);
+  ctx.lineTo(45, 45);
+  ctx.lineTo(75, 45);
+  ctx.lineTo(75, 75);
+  ctx.lineTo(105, 75);
+  ctx.lineTo(105, 105);
+  ctx.lineTo(135, 105);
+  ctx.lineTo(135, 135);
+  ctx.lineTo(165, 135);
+  ctx.closePath();
+  ctx.strokeStyle = "#505050";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+}
+drawGrid();
+drawCircle();
+drawSquare();
+drawTriangle();
+drawRectTriangle();
+drawLozenge();
+drawHexagono();
+drawLadder();
+</script>
+<!--
+<canvas id="myCanvas" width="500" height="500"></canvas>
+
+<script>
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Desenha um quadrado
+  ctx.beginPath();
+  ctx.moveTo(100, 100);
+  ctx.lineTo(200, 100);
+  ctx.lineTo(200, 200);
+  ctx.lineTo(100, 200);
+  ctx.closePath();
+  ctx.stroke();
+
+  // Desenha um retângulo
+  ctx.beginPath();
+  ctx.moveTo(250, 100);
+  ctx.lineTo(400, 100);
+  ctx.lineTo(400, 200);
+  ctx.lineTo(250, 200);
+  ctx.closePath();
+  ctx.stroke();
+
+  // Desenha um círculo
+  ctx.beginPath();
+  ctx.arc(150, 350, 50, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  // Desenha um hexágono
+  const x = 300;
+  const y = 350;
+  const size = 50;
+  ctx.beginPath();
+  ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
+  for (let i = 1; i <= 6; i++) {
+    ctx.lineTo(x + size * Math.cos(i * 2 * Math.PI / 6), y + size * Math.sin(i * 2 * Math.PI / 6));
+  }
+  ctx.closePath();
+  ctx.stroke();
+</script>
+-->

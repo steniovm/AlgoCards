@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editor de Labirinto</title>
+    <style>
+textarea{
+  width: 205px;
+  height: 325px;
+}
+    </style>
+  </head>
+  <body>
+<canvas id="myCanvas" width="330" height="330"></canvas>
+<textarea id="showdata"></textarea>
+  </body>
+<script>
+
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+const textarea = document.getElementById("showdata");
+const personimg = document.createElement('img');
+personimg.src="imgs/person.png";
+const person = {px:0,py:0,dx:0,dy:1,ag:0};//personagem, posição e direção que está virado
+const numRows = 11;
+const numCols = 11;
+const cellSize = canvas.width / numCols;
+//Cria um array para armazenar as cores de cada célula do grid
+let gridColors = new Array(numRows);
+for (let i = 0; i < numRows; i++) {
+  gridColors[i] = new Array(numCols);
+  for (let j = 0; j < numCols; j++) {
+    gridColors[i][j] = 0;
+  }
+}
+
+
+//desenha gride no tabuleiro
+function drawGrid(){
+    ctx.fillStyle = "#f5f5f5";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    // Desenha as linhas horizontais do grid
+  for (let y = 0; y <= canvas.height; y += cellSize) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
+  }
+    // Desenha as linhas verticais do grid
+  for (let x = 0; x <= canvas.width; x += cellSize) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+  }
+}
+//imprime personagem no tabuleiro
+function drawPerson(){
+    const px = (canvas.width/2)+(cellSize*person.px)-(personimg.width/2);
+    const py = (canvas.height/2)-(cellSize*person.py)-(personimg.height/2);
+    const cx = (canvas.width/2)+(cellSize*person.px);
+    const cy = (canvas.height/2)-(cellSize*person.py);
+    ctx.translate(cx,cy);
+    ctx.rotate(person.ag);
+    ctx.translate(-cx,-cy);
+    ctx.drawImage(personimg,px,py);
+    ctx.translate(cx,cy);
+    ctx.rotate(-person.ag);
+    ctx.translate(-cx,-cy);
+    return {px,py};
+}
+
+function drawCell(){
+// Desenha o grid com todas as células em suas respectivas cores
+  let gcolor;
+  for (let i = 0; i < numRows; i++) {
+    for (let j = 0; j < numCols; j++) {
+      gcolor = gridColors[i][j];
+      if (gcolor === 0) ctx.fillStyle = "#f5f5f5";//pista
+      if (gcolor === 1) ctx.fillStyle = "#202020";//parede
+      if (gcolor === 2) ctx.fillStyle = "#f5f520";//chegada
+      ctx.fillRect(j * cellSize+1, i * cellSize+1, cellSize-2, cellSize-2);
+    }
+  }  
+}
+// Adiciona um listener de eventos de clique ao elemento canvas
+canvas.addEventListener("click", function(event) {
+  // Calcula a posição da célula clicada no grid
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const col = Math.floor(x / cellSize);
+  const row = Math.floor(y / cellSize);
+  let gcolor;
+  // Muda a cor da célula correspondente
+  if (gridColors[row][col] === 0) {
+    gridColors[row][col] = 1;
+  } else if (gridColors[row][col] === 1) {
+    gridColors[row][col] = 2;
+  } else {
+    gridColors[row][col] = 0;
+  }
+  // Redesenha a célula com a nova cor
+  gcolor = gridColors[row][col];
+  if (gcolor === 0) ctx.fillStyle = "#f5f5f5";//pista
+  if (gcolor === 1) ctx.fillStyle = "#202020";//parede
+  if (gcolor === 2) ctx.fillStyle = "#f5f520";//chegada
+  ctx.fillRect(col * cellSize+1, row * cellSize+1, cellSize-2, cellSize-2);
+  textarea.innerHTML = JSON.stringify(gridColors);
+});
+
+drawGrid();
+document.addEventListener('click',drawPerson);
+drawCell();
+const mazes = []
+
+</script>
+</html>

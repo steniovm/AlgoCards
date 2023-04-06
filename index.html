@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta property="og:title" content="AlgoCards" />
+        <meta property="og:description" content="Cards para Desenvolvimento do Pensamento Computacional" />
+        <meta property="og:locale" content="pt-br" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="style.css" />
+        <title>AlgoCards - Cards para Desenvolvimento do Pensamento Computacional</title>
+    </head>
+    <body>
+        <div id="music-control">
+            <div class="audiobtn" id="mute-audio"></div>
+            <div class="audiobtn" id="down-audio"></div>
+            <div class="audiobtn" id="up-audio"></div>
+            <div class="audiobtn" id="max-audio"></div>
+        </div>
+        <img src="imgs/algocardsonline.png" alt="AlgoCards"/>
+        <div id="modaltutorial" class="modalnone">
+            <button id="closeTut" class="modalbutton" onclick="clouseTutorial();">Fechar Tutorial</button>
+            <div id="tutF" class="tut tutnone">
+                <h2>Tutorial - Livre</h2>
+                <h3>Use a imaginação<h3>
+                <ol>
+                    <li>A partir de 1 jogador, recomendado até 4 jogadores</li>
+                    <li>Uso de regras fora do computador (a serem criadas)</li>
+                    <li>Recomendado para qualquer idade</li>
+                </ol>
+                <ol>
+                    <li>Arraste as instruções para o quadro do algoritmo na sequência que devem ser executadas.</li>
+                    <li>Para remover uma instrução do algoritmo dê um duplo clique.</li>
+                    <li>Terminado de criar a sequência clique no botão Executar.</li>
+                    <li>AGORA USE A IMAGINAÇÃO</li>
+                    <li>Crie as regras do jogo, como nos exemplos:</li>
+                    <li>Corrida de tabuleiro: Tenham um tabuleiro quadriculado em que o peão de cada jogador deve executar as instruções na tela até chegar em um determinado ponto;</li>
+                    <li>Desafio de movimentos: Os próprios jogadores ficarem de pé e se moverem conforme as instruções que aparecem na tela, com um jogador criando desafios para o outro.</li>
+                    <li>Etc...</li>
+                </ol>
+            </div>
+            <div id="tutL" class="tut tutnone">
+                <h2>Tutorial - Labirinto</h2>
+                <h3>Ache o caminho<h3>
+                <ol>
+                    <li>A partir de 1 jogador, recomendado até 3 jogadores</li>
+                    <li>Recomendado para pessoas a partir de 8 anos</li>
+                </ol>
+                <ol>
+                    <li>Arraste as instruções para o quadro do algoritmo na sequência que devem ser executadas.</li>
+                    <li>Para remover uma instrução do algoritmo dê um duplo clique.</li>
+                    <li>Terminado de criar a sequência clique no botão Executar.</li>
+                    <li>O seu objetivo é que a sequência de instruções leve o personagem até o quadrinho amarelo sem passar pelas paredes (quadrinhos escuros).</li>
+                    <li>Se o personagem errar o caminho retorne para a tela de edição e ajuste o algorítimo.</li>
+                    <li>Uma sugestão é jogar de forma cooperativa, com os jogares se alternando nos ajustes do algorítimo.</li>
+                </ol>
+            </div>    
+            <div id="tutM" class="tut tutnone">
+                <h2>Tutorial - Movimento</h2>
+                <h3>Ande na linha<h3>
+                <ol>
+                    <li>A partir de 1 jogador, recomendado até 3 jogadores</li>
+                    <li>Recomendado para pessoas a partir de 10 anos</li>
+                </ol>
+                <ol>
+                    <li>Arraste as instruções para o quadro do algoritmo na sequência que devem ser executadas.</li>
+                    <li>Para remover uma instrução do algoritmo dê um duplo clique.</li>
+                    <li>Terminado de criar a sequência clique no botão Executar.</li>
+                    <li>O seu objetivo é que a sequência de instruções faça o personagem caminhar em cima da linha desenhada, formando figuras geométricas.</li>
+                    <li>Se o personagem errar o caminho retorne para a tela de edição e ajuste o algorítimo</li>
+                    <li>Uma sugestão é jogar de forma cooperativa, com os jogares se alternando nos ajustes do algorítimo</li>
+                </ol>
+            </div>
+            <div id="tutR" class="tut tutnone">
+                <h2>Tutorial - Ritmo</h2>
+                <h3>Mexa-se no Ritmo<h3>
+                <ol>
+                    <li>A partir de de 1 jogador, recomendado até 10 jogadores</li>
+                    <li>Uso de regras fora do computador (a serem criadas)</li>
+                    <li>Recomendado para qualquer idade</li>
+                </ol>
+                <ol>
+                    <li>Arraste as instruções para o quadro do algoritmo na sequência que devem ser executadas.</li>
+                    <li>Lembre-se que você pode usar o card "Ação" para criar instruções novas.</li>
+                    <li>Para remover uma instrução do algoritmo dê um duplo clique.</li>
+                    <li>Mova a barra azul para ajustar a velocidade</li>
+                    <li>Terminado de criar a sequência clique no botão Executar.</li>
+                    <li>AGORA USE A IMAGINAÇÃO</li>
+                    <li>Crie as regras do jogo, como nos exemplos:</li>
+                    <li>Desafio de movimentos: Os jogadores ficarem de pé e se moverem conforme as instruções que aparecem na tela, com um jogador criando desafios para o outro.</li>
+                    <li>Desafio crescente: Como no exemplo anterior, os jogadores ficarem de pé e se moverem conforme as instruções que aparecem na tela, porem com jogadores apenas adicionando uma instrução ao algorítimo a cada rodada, e não criando do zero.</li>
+                    <li>Dança em grupo (recomendado quando o número de jogadores é maior que 4): Um jogador será o mestre, o mestre cria o algorítimo, quando clica em executar os demais devem executar os movimentos;</li>
+                    <li>Etc...</li>
+                </ol>
+            </div>    
+            <div id="tutZ" class="tut tutnone">
+                <h2>Tutorial - Zumbi</h2>
+                <h3>Exploda as cabeças (de Zumbis)<h3>
+                <ol>
+                    <li>A partir de 1 jogador, recomendado 1 jogador</li>
+                    <li>Recomendado para pessoas a partir de 18 anos</li>
+                </ol>
+                <ol>
+                    <li>Arraste as instruções para o quadro do algoritmo na sequência que devem ser executadas.</li>
+                    <li>Para remover uma instrução do algoritmo dê um duplo clique.</li>
+                    <li>Terminado de criar a sequência clique no botão Executar.</li>
+                    <li>O seu objetivo é eliminar os zumbis sem tocá-los.</li>
+                    <li>O card "CORINGA" dispara um tiro com alcance de três unidades (quadrinhos).</li>
+                </ol>
+            </div>
+        </div>
+        <div id="modalinit">
+            <h2>Escolha o jogo</h2>
+            <button id="btACF" class="modalbutton" onclick="initgame(event);">AlgoCardsLivre</button>
+            <button id="btACL" class="modalbutton" onclick="initgame(event);">AlgoLabirinto</button>
+            <button id="btACM" class="modalbutton" onclick="initgame(event);">AlgoMovimento</button>
+            <button id="btACR" class="modalbutton" onclick="initgame(event);">AlgoRitmo</button>
+            <button id="btACZ" class="modalbutton" onclick="initgame(event);">AlgoZumbi</button>
+        </div>
+        <main>
+            <section id="instructions">
+                <h3>Conjunto de Instruções</h3>
+                <div id="instructionslist">
+                    <div class="instruction" draggable="true" id="gireEsquerda" name="gireEsquerda" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/gireEsquerda.png');"></div>
+                    <div class="instruction" draggable="true" id="paraEsquerda" name="paraEsquerda" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraEsquerda.png');"></div>
+                    <div class="instruction" draggable="true" id="paraFrente" name="paraFrente" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraFrente.png');"></div>
+                    <div class="instruction" draggable="true" id="paraDireita" name="paraDireita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraDireita.png');"></div>
+                    <div class="instruction" draggable="true" id="gireDireita" name="gireDireita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/gireDireita.png');"></div>
+                    <div class="instruction" draggable="true" id="meiaVolta" name="meiaVolta" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/meiaVolta.png');"></div>
+                    <div class="instruction" draggable="true" id="paraTras" name="paraTras" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraTras.png');"></div>
+                    <div class="instruction" draggable="true" id="coringa" name="coringa" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/coringa.png');"></div>
+                    <div class="instruction" draggable="true" id="repita" name="repita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/repita.png');">
+                        <input type="number" class="param" min="1" value="1">
+                    </div>
+                    <div class="instruction" draggable="true" id="abreBloco" name="abreBloco" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/abreBloco.png');"></div>
+                    <div class="instruction" draggable="true" id="fechaBloco" name="fechaBloco" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/fechaBloco.png');"></div>
+                    <div class="instruction liveact" draggable="true" id="girDireita" name="girDireita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/girDireita.png');">
+                        <input type="number" class="param pgir" min="1" value="90">
+                    </div>
+                    <div class="instruction liveact" draggable="true" id="girEsquerda" name="girEsquerda" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/girEsquerda.png');">
+                        <input type="number" class="param pgir" min="1" value="90">
+                    </div>
+                    <div class="instruction liveact" draggable="true" id="acao" name="acao" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/acao.png');">
+                        <input type="text" class="param ptext">
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h3>Algoritmo</h3>
+                <div id="algol" ondrop="dropCopy(event);" ondragover="dragoverhandler(event);"></div>
+            </section>
+            <Button id="playalgo" onclick="playAlgo();">
+                <img id="playimg" src="imgs/playbutton.png"/>
+                <span>Executar</span>
+            </Button>
+            <input type="range" id="inspeed" class="inspeed" min="0" max="2500" value="800" step="10" onchange="changespeed()"/>
+        </main>
+        <div id="modalboard" class="modalnone">
+            <div id="currentAction"></div>
+            <canvas id="board" width="330" height="330"></canvas>
+            <button id="btnext">Proximo</button>
+            <img src="imgs/algocardsonline.png" alt="AlgoCards"/>
+            <button id="btprevi"  onclick="previous();">Voltar</button>
+            <button id="btrestart" onclick="restart();">Reiniciar</button>
+        </div>
+        <footer>
+            <img id="myimg" class="myimg" src="stenio.jpg" alt="Minha Foto"/>
+            <div id="divinfo" class="divinfo">
+                <span>Adaptação Web: Stênio Vinicios de Medeiros</span>
+                <span>Portifolio: <a href="https://steniovm.github.io/steniovm/"  alt="Meu portifolio de projetos">https://steniovm.github.io/steniovm/</a></span>
+                <span>Email: <a href="mailto:steniovm@gmail.com" alt="Meu email">steniovm@gmail.com</a></span>
+            </div>
+            <div id="divref">
+                <span><h3>Produção original</h3></span>
+                <span>BRACKMANN. Computacional: Educação em Computação. 2023.</span>
+                <span>Disponível em: <a href="https://www.computacional.com.br/" alt="computacional.com.br">https://www.computacional.com.br/</a> Acesso em: 20/03/2023.</span>
+            </div>
+        </footer>
+        <script type="text/javascript" src="scripts.js"></script>
+    </body>
+</html>
