@@ -11,8 +11,8 @@ const personimg = document.createElement('img');//imagem que representa o person
 personimg.src="imgs/person.png";//imagem que representa o personagem na tabuleiro
 const atiradorimg = document.createElement('img');//imagem que representa o personagem na tabuleiro
 atiradorimg.src="imgs/atirador.png";//imagem que representa o personagem na tabuleiro
-const zumbimg = document.createElement('img');
-zumbimg.src="imgs/zumbi.png";
+const zumbimg = document.createElement('img');//imagem dos zumbis
+zumbimg.src="imgs/zumbi.png";//imagem dos zumbis
 bgmusic.loop = true;//musica tocada em loop
 bgmusic.volume = 0.2;//volume inicial da musica baixo
 let countinstruct = 0;//conta o numero de instruções executadas
@@ -23,6 +23,7 @@ let interval;//rotulo do setInterval
 let typegame = "";//tipo de jogo escolhido
 let seqcards=[];//sequencia de instruções
 let person = {px:0,py:0,dx:0,dy:1,ag:0};//personagem, posição e direção que está virado
+let zumbis = [];//armazena os dados dos zumbis
 //labirintos - 0 "#f5f5f5" pista - 1 "#202020" parede - 2 "#f5f520" chegada
 const mazes = [
     [
@@ -318,7 +319,7 @@ function drawGrid(){
 function clearCell(){
     const px = (board.width/2)+(cellSize*person.px)-(personimg.width/2);
     const py = (board.height/2)-(cellSize*person.py)-(personimg.height/2);
-    ctx.fillStyle = "#f5f5f5b0";
+    ctx.fillStyle = "#f5f5f5a0";
     ctx.fillRect(px+1, py+1, cellSize-2, cellSize-2);
     return {px,py};
 }
@@ -533,8 +534,8 @@ function playAlgo(){
                 document.getElementById('modalboard').classList.add('modalplay');
                 clearCell();
                 drawPerson();
-                document.getElementById("btnext").addEventListener('click',rumInstM);
-                interval = setInterval(rumInstM,1000);
+                document.getElementById("btnext").addEventListener('click',rumInstL);
+                interval = setInterval(rumInstL,1000);
             break;
             case "btACM":
                 document.getElementById('modalboard').classList.add('modalplay');
@@ -614,8 +615,9 @@ function writeInst(nodeslist, start){
 function restart(){
     countinstruct = 0;
     typegame = "";
-    seqcards=[];
+    seqcards = [];
     person = {px:0,py:0,dx:0,dy:1,ag:0};
+    zumbis = [];
     drawGrid();
     document.getElementById('modalinit').style.display = "flex";
     document.getElementById('modalboard').classList.add('modalnone');
@@ -646,6 +648,7 @@ function previous(){
     if(typegame=="btACR") document.getElementById("inspeed").classList.remove("inspeed");
     if(typegame=="btACM") drawInCanva(tracing);
     if(typegame=="btACL") drawMaze(mazeing);
+    if(typegame=="btACZ") drawZumbi(zumbis.length);
     document.getElementById("currentAction").innerHTML = "";
     document.getElementById("currentAction").style = "background-image: none;";
     clearInterval(interval);
@@ -695,6 +698,27 @@ function drawMaze(m=-1){
             ctx.fillRect(col*cellSize+1, row*cellSize+1, cellSize-2, cellSize-2);
         });
     });
+}
+function rumInstL(){
+    clearCell();
+    const px = person.px;
+    const py = person.py;
+    if (seqcards.length>0 && countinstruct < seqcards.length){
+        person = seqcards[countinstruct].rum(person);
+        drawPerson();
+    }
+    if ((person.px<-5)||(person.px>5)||(person.py<-5)||(person.py>5)||
+        (mazes[mazeing][5-person.py][5+person.px]==1)){
+        clearCell();
+        const pxx = (board.width/2)+(cellSize*person.px)-(personimg.width/2);
+        const pyy = (board.height/2)-(cellSize*person.py)-(personimg.height/2);
+        ctx.fillStyle = "#202020a0";
+        ctx.fillRect(pxx+1, pyy+1, cellSize-2, cellSize-2);
+        person.px = px;
+        person.py = py;
+        drawPerson();
+    }
+    rumInstFF();
 }
 //btACM - AlgoMovimento - fazer um desenho
 function rumInstM(){
@@ -820,24 +844,29 @@ function drawLadder(){
 }
 //btACZ - Algozumbi - tiro e labirinto
 //função para plotar os zumbis na tela
-function drawZumbi(){
-    const n = Math.ceil(Math.random()*10);//sorteia o numero de zumbis
+function drawZumbi(m=0){
+    const n = (m>0) ? m : Math.ceil(Math.random()*10);//sorteia o numero de zumbis
     let col, row, dire, px, py, cx, cy;
-    for(let i=0;i<n;i++){
-        col = Math.ceil(Math.random()*nrowcol)-6;
-        row = Math.ceil(Math.random()*nrowcol)-6;
-        if (col != person.px || row != person.py){
+    if(m==0){
+        for(let i=0;i<n;i++){
+            col = Math.ceil(Math.random()*nrowcol)-6;
+            row = Math.ceil(Math.random()*nrowcol)-6;
             dire = (Math.PI/2)*Math.round(Math.random()*3);
-            px = (board.width/2)+(cellSize*col)-(zumbimg.width/2);
-            py = (board.height/2)-(cellSize*row)-(zumbimg.height/2);
-            cx = (board.width/2)+(cellSize*col);
-            cy = (board.height/2)-(cellSize*row);
+            zumbis.push({col: col, row: row, dire: dire});
+        }
+    }
+    for(let i=0;i<n;i++){
+        if (col != person.px || row != person.py){
+            px = (board.width/2)+(cellSize*zumbis[i].col)-(zumbimg.width/2);
+            py = (board.height/2)-(cellSize*zumbis[i].row)-(zumbimg.height/2);
+            cx = (board.width/2)+(cellSize*zumbis[i].col);
+            cy = (board.height/2)-(cellSize*zumbis[i].row);
             ctx.translate(cx,cy);
-            ctx.rotate(dire);
+            ctx.rotate(zumbis[i].dire);
             ctx.translate(-cx,-cy);
             ctx.drawImage(zumbimg,px,py);
             ctx.translate(cx,cy);
-            ctx.rotate(-dire);
+            ctx.rotate(-zumbis[i].dire);
             ctx.translate(-cx,-cy);
         }
     }
@@ -862,6 +891,11 @@ function rumInstZ(){
             person = seqcards[countinstruct].rum(person);
         }
     }
+    zumbis.forEach((item)=>{
+        if ((person.px == item.col) && (person.py == item.row)){
+            personimg.src = zumbimg.src;
+        }
+    });
     drawPerson();
     rumInstFF();
 }
