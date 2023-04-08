@@ -120,26 +120,26 @@
             <section id="instructions">
                 <h3>Conjunto de Instruções</h3>
                 <div id="instructionslist">
-                    <div class="instruction" draggable="true" id="gireEsquerda" name="gireEsquerda" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/gireEsquerda.png');"></div>
-                    <div class="instruction" draggable="true" id="paraEsquerda" name="paraEsquerda" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraEsquerda.png');"></div>
-                    <div class="instruction" draggable="true" id="paraFrente" name="paraFrente" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraFrente.png');"></div>
-                    <div class="instruction" draggable="true" id="paraDireita" name="paraDireita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraDireita.png');"></div>
-                    <div class="instruction" draggable="true" id="gireDireita" name="gireDireita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/gireDireita.png');"></div>
-                    <div class="instruction" draggable="true" id="meiaVolta" name="meiaVolta" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/meiaVolta.png');"></div>
-                    <div class="instruction" draggable="true" id="paraTras" name="paraTras" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraTras.png');"></div>
-                    <div class="instruction" draggable="true" id="coringa" name="coringa" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/coringa.png');"></div>
-                    <div class="instruction" draggable="true" id="repita" name="repita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/repita.png');">
+                    <div class="instruction" draggable="true" id="gireEsquerda" name="gireEsquerda" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/gireEsquerda.png');"></div>
+                    <div class="instruction" draggable="true" id="paraEsquerda" name="paraEsquerda" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraEsquerda.png');"></div>
+                    <div class="instruction" draggable="true" id="paraFrente" name="paraFrente" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraFrente.png');"></div>
+                    <div class="instruction" draggable="true" id="paraDireita" name="paraDireita" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraDireita.png');"></div>
+                    <div class="instruction" draggable="true" id="gireDireita" name="gireDireita" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/gireDireita.png');"></div>
+                    <div class="instruction" draggable="true" id="meiaVolta" name="meiaVolta" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/meiaVolta.png');"></div>
+                    <div class="instruction" draggable="true" id="paraTras" name="paraTras" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/paraTras.png');"></div>
+                    <div class="instruction" draggable="true" id="coringa" name="coringa" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/coringa.png');"></div>
+                    <div class="instruction" draggable="true" id="repita" name="repita" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/repita.png');">
                         <input type="number" class="param" min="1" value="1">
                     </div>
-                    <div class="instruction" draggable="true" id="abreBloco" name="abreBloco" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/abreBloco.png');"></div>
-                    <div class="instruction" draggable="true" id="fechaBloco" name="fechaBloco" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/fechaBloco.png');"></div>
-                    <div class="instruction liveact" draggable="true" id="girDireita" name="girDireita" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/girDireita.png');">
+                    <div class="instruction" draggable="true" id="abreBloco" name="abreBloco" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/abreBloco.png');"></div>
+                    <div class="instruction" draggable="true" id="fechaBloco" name="fechaBloco" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/fechaBloco.png');"></div>
+                    <div class="instruction liveact" draggable="true" id="girDireita" name="girDireita" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/girDireita.png');">
                         <input type="number" class="param pgir" min="1" value="90">
                     </div>
-                    <div class="instruction liveact" draggable="true" id="girEsquerda" name="girEsquerda" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/girEsquerda.png');">
+                    <div class="instruction liveact" draggable="true" id="girEsquerda" name="girEsquerda" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/girEsquerda.png');">
                         <input type="number" class="param pgir" min="1" value="90">
                     </div>
-                    <div class="instruction liveact" draggable="true" id="acao" name="acao" ondblclick="deleteitem(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/acao.png');">
+                    <div class="instruction liveact" draggable="true" id="acao" name="acao" ondblclick="doubloClickCp(event)" ondragstart="dragstarthandler(event);" style="background-image: url('imgs/acao.png');">
                         <input type="text" class="param ptext">
                     </div>
                 </div>

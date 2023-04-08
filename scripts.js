@@ -193,6 +193,19 @@ function dragstarthandler(ev) {
  ev.currentTarget.style.border = "dashed 1px silver";
  ev.dataTransfer.setData("text", ev.target.id); 
 }
+//funções referentes ao duplo click
+function doubloClickCp(ev){
+    //se estiver no algoritimo, deleta
+    if(ev.target.parentElement.id=="algol"){
+        document.getElementById(ev.target.id).remove();
+        dropsong.play();
+    }else if(ev.target.parentElement.id=="instructionslist"){//se estiver na base, copia para o algoritimo
+        let nodeCopy = document.getElementById(ev.target.id).cloneNode(true);
+        nodeCopy.id = "intr"+countinstruct++;
+        document.getElementById("algol").appendChild(nodeCopy);
+        dropsong.play();
+    }
+}
 
 //configura velocidade do jogo (somente quando se escolhe tipo ritimo)
 function changespeed(){
