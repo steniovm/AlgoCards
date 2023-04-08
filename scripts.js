@@ -151,14 +151,14 @@ document.getElementById('mute-audio').addEventListener('click',()=>{
     stepsong.volume = 0;
 });
 document.getElementById('down-audio').addEventListener('click',()=>{
-    if (dropsong.volume > 0) dropsong.volume -= 0.1;
-    if (bgmusic.volume > 0) bgmusic.volume -= 0.1;
-    if (stepsong.volume > 0) stepsong.volume -= 0.1;
+    if (dropsong.volume >= 0.1) dropsong.volume -= 0.1;
+    if (bgmusic.volume >= 0.1) bgmusic.volume -= 0.1;
+    if (stepsong.volume >= 0.1) stepsong.volume -= 0.1;
 });
 document.getElementById('up-audio').addEventListener('click',()=>{
-    if (dropsong.volume < 1) dropsong.volume += 0.1;
-    if (bgmusic.volume < 1) bgmusic.volume += 0.1;
-    if (stepsong.volume < 1) stepsong.volume += 0.1;
+    if (dropsong.volume <= 0.9) dropsong.volume += 0.1;
+    if (bgmusic.volume <= 0.9) bgmusic.volume += 0.1;
+    if (stepsong.volume <= 0.9) stepsong.volume += 0.1;
 });
 document.getElementById('max-audio').addEventListener('click',()=>{
     dropsong.volume = 1;
@@ -169,7 +169,7 @@ document.getElementById('max-audio').addEventListener('click',()=>{
 //funções referentes ao drag and drop
 function dropCopy(ev){
     ev.preventDefault();
-    if((ev.target.id=="algol")||(ev.toElement.id=="algol")){
+    if(ev.target.id=="algol"){
         let id = ev.dataTransfer.getData("text");
         let nodeCopy = document.getElementById(id).cloneNode(true);
         nodeCopy.id = "intr"+countinstruct++;
